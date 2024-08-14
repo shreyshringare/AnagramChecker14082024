@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>
+            Anagram Checker
+        </title>
+        <style>
+            h1{
+                font-size: 60px;
+                background-color: black;
+                color:white;
+                width: 40%;
+                border-radius: 25px;  
+                font-family:'Cambria';  
+            }
+
+            input{
+                height:90px;
+                width:370px;
+                font-size: 20px;
+                margin:20px;
+                font-family:'Courier New';
+                }
+
+            body{
+                background-color:lightcyan;
+            }   
+            
+            
+            #sub{
+                width:180px;
+                font-family:'Cambria';
+                font-weight:bold;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>Anagram Checker</h1>
+            <form onsubmit="check()">
+            <input type="text" placeholder="Enter the first word" id="word1">
+            <input type="text" placeholder="Enter the second word" id="word2">
+            <br><br>
+            <input type="submit" value="Check" id="sub">
+            </form>
+            <h2 id="msg"/>
+        </center>
+        <script>
+            function check(){
+                event.preventDefault();
+                let word1=document.getElementById("word1");
+                let word2=document.getElementById("word2");
+                let msg=document.getElementById("msg");
+
+                if(word1.value.trim()===""){
+                    alert("Please enter the first word.");
+                    word1.value="";
+                    msg.innerHTML="";
+                    word1.focus();
+                    return;
+                }
+                else if(word2.value.trim()===""){
+                    alert("Please enter the second word.");
+                    word2.value="";
+                    msg.innerHTML="";
+                    word2.focus();
+                    return;
+                }
+
+                let n1=word1.value.split("").sort().join("");
+                let n2=word2.value.split("").sort().join("");
+                if(n1 === n2){
+                    msg.innerHTML=word1.value +" and " +word2.value +" are anagrams.";
+                }
+                else if(!(n1 === n2)){
+                    msg.innerHTML=word1.value +" and " +word2.value +" are NOT anagrams.";
+                }
+                else{
+                    alert("mistake.");
+                }
+
+            }
+        </script>
+    </body>
+</html>
